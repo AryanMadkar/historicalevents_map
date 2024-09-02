@@ -24,7 +24,7 @@ function App() {
     <div className="relative flex h-[100vh] w-[100vw] main1">
       <Topbar onChange={newcatdata} />
       <Maps piglet={location}/>
-      <Leftbar onChange={newlocation} />
+      <Leftbar onChange={newlocation} categeory={newcat} />
     </div>
   );
 }

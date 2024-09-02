@@ -2,23 +2,34 @@ import React, { useEffect, useState } from "react";
 import { eventsdata } from "../dataset/Dataset";
 
 const Leftbar = (props) => {
+  const [kitty, setkitty] = useState([]);
   const [piglet, setPiglet] = useState([]);
-  // const [realdor, setRealdor] = useState([]);
-  // if (newcat !== undefined) {
-  //   const { categeory } = newcat;
-  //   const getuniquedata = (data, category) => {
-  //     return data.filter((event) => event.category === category);
-  //   };
-  //   setRealdor(getuniquedata(eventsdata, categeory));
-  // }
+
+  const getuniquedata = (data, categeory1) => {
+    return data.filter((event) => event.category === categeory1);
+  };
+  let loader = getuniquedata(eventsdata, kitty.categeory);
+  
+
+  useEffect(() => {
+    setkitty(props.categeory);
+  }, [kitty, props.categeory]);
 
   useEffect(() => {
     props.onChange(piglet);
   }, [piglet, props.onChange]);
 
+  if (loader.length<1) {
+   
+    
+  }
+
   return (
     <div className="absolute text-white overflow-y-scroll  h-[100vh] w-[20vw] morf right-0">
-      {eventsdata.map((event) => {
+    {loader.length<1?<div className="flex h-[100vh] justify-center w-full items-center text-xl">
+      <h1>Chose something from <br/>the categeories</h1>
+    </div>:null}
+      {loader.map((event) => {
         return (
           <div
             key={event.id}

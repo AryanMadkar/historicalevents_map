@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Topbar = (props) => {
+  
   const [categeo, setCategeo] = useState("");
   const eventhandler = (e) => {
     setCategeo({ ...categeo, [e.target.name]: e.target.value });
@@ -18,7 +19,7 @@ const Topbar = (props) => {
           value={categeo}
           className="p-[0.5rem] bg-emerald-700 transition-all rounded-2xl"
         >
-          <option >Choose Any </option>
+          <option>Choose Any </option>
           <option value="Medieval">Medieval</option>
           <option value="Modern">Modern</option>
           <option value="Exploration">Exploration</option>
